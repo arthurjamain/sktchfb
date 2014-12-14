@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Sketchfab Widgets</title>
+
+        <link rel="stylesheet" href="{{ STATIC_URL }}sources/vendors/Normalize.css" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}sources/vendors/editor.css" />
+        <style>.editor-panel, .editor-view { padding-top: 0 }</style>
+        <link rel="stylesheet" href="{{ STATIC_URL }}style.css" />
+
+        <script>
+          var require = {
+              baseUrl: '{{ STATIC_URL }}sources/'
+          };
+        </script>
+        <script data-main="main" src="{{ STATIC_URL }}sources/vendors/require.2.1.13.js"></script>
+        
+
+    </head>
+
+    <body>
+        <div class="editor">
+            <div class="editor-header">
+          
+            </div>
+            <div class="editor-panel">
+            </div>
+            <div class="editor-view">
+                <div class="card">
+                    <div class="name">Maël Nison</div>
+                    <div class="job">Frontend Developer</div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
