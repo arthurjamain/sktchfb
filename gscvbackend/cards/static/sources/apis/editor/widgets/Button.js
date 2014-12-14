@@ -43,7 +43,7 @@ define( [
             e.preventDefault();
 
             if ( this.options.event ) {
-                this.options.model.trigger( this.options.event );
+                this.model.trigger( this.options.event );
             }
 
         }
