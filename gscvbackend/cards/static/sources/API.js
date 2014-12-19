@@ -16,19 +16,18 @@ define( [
   
   _.extend(API.prototype, {
     
-    
-    get     : function(resource, data, cb) {
+    read: function(resource, data, cb) {
       
       if (!cb) { cb = data || function () { console.log(arguments); }; }
       
       this.query( {
         type: 'GET',
         resource: resource,
-        data: data
+        data: (data && data.toJSON) ? data.toJSON() : data
       }, cb );
       
     },
-    post    : function(resource, data, cb) {
+    create: function(resource, data, cb) {
       
       this.query( {
         type: 'POST',
@@ -36,6 +35,31 @@ define( [
         data: JSON.stringify(data)
       }, cb );
       
+    },
+    update: function(resource, data, cb) {
+      
+      if (data) {
+        
+        if (data.toJSON) {
+          data = data.toJSON();
+        }
+
+      }
+      
+      console.log(resource, data);
+      
+      this.query( {
+        type: 'PUT',
+        resource: resource,
+        data: JSON.stringify(data)
+      }, cb );
+    },
+    delete: function(resource, id, cb) {
+      
+      this.query( {
+        type: 'DELETE',
+        resource: resource + '/' + id,
+      }, cb );
     },
     
     query   : function (opt, cb) {
