@@ -55,6 +55,18 @@ define( [
                 } );
             }
 
+        },
+      
+        setModel: function (model) {
+          this.model = model;
+          
+          this.slider.setModel(model);
+          this.slider.delegateEvents();
+          this.slider.render();
+          
+          this.number.setModel(model);
+          this.number.delegateEvents();
+          this.number.render();
         }
 
     } );

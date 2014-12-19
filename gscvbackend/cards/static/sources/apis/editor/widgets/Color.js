@@ -71,11 +71,11 @@ define( [
             this.colorPicker.set( this.$( '.value' ).val() );
 
         },
-
+      
         render: function () {
 
             var rgb = this.get();
-
+          
             this.colorPicker.set( rgb );
 
             var rounded = {

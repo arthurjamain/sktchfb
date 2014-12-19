@@ -58,14 +58,14 @@ define( [
             if ( e.target.files[ 0 ] ) {
 
                 if ( this.options.selectEvent ) {
-                    this.options.model.trigger( this.options.selectEvent, e.target.files[ 0 ], this );
+                    this.model.trigger( this.options.selectEvent, e.target.files[ 0 ], this );
                 }
 
             } else {
 
                 //User canceled upload
                 if ( this.options.cancelEvent ) {
-                    this.options.model.trigger( this.options.cancelEvent, this );
+                    this.model.trigger( this.options.cancelEvent, this );
                 }
 
             }

@@ -103,6 +103,18 @@ define( [
             } );
 
         },
+      
+        /**
+         * Changes the model. Not very useful there but allows for the propagation of 
+         * the model change on an "containing" widget.
+         *
+         * - Can be safely overriden
+         */
+        setModel: function ( model ) {
+          this.undelegateEvents();
+          this.model = model;
+          this.delegateEvents();
+        },
 
         /**
          * Does basically the same thing that the $() override : the events will be 'scoped' to the current widget elements, and will not be triggered by nested widgets elements.
