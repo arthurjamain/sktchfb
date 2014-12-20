@@ -13,7 +13,9 @@ class Card(models.Model):
   imageCoordinates = models.CharField(max_length=100, null=True)
   imageSize = models.CharField(max_length=10, null=True)
   radius = models.IntegerField(null=True)
-  fields = models.CharField(max_length=2048, null=True)
+  fields = models.CharField(max_length=4096, null=True)
+  fieldsCoordinates = models.CharField(max_length=2048, null=True)
+  fieldsColors = models.CharField(max_length=2048, null=True)
   
   def __unicode__(self):
     return self.title

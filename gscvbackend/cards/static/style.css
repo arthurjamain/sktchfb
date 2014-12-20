@@ -26,6 +26,7 @@ html, body {
 }
 
 .card .background {
+  -webkit-user-select: none;
   position: absolute;
   z-index: 0;
   top: 0;
@@ -37,13 +38,12 @@ html, body {
   z-index: 2;
 }
 
-.card .fields {
+.card .field {
+  -webkit-user-select: none;
+  cursor: pointer;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
+  top: 10px;
+  left: 10px;
 }
 
 .page {
@@ -67,6 +67,22 @@ html, body {
 .editor .card,
 .editor {
   transition: all 400ms ease-in-out!important;
+}
+
+.editor-panel .widget.color-widget > .widget-wrapper {
+  position: absolute;
+  width: 260px;
+  z-index: 2;
+  padding: 20px;
+  background: #686664;
+  border-radius: 3px;
+  box-shadow: 0 3px 12px -3px rgba(0,0,0,0.8);
+  border-top: 1px solid #888;
+  display: none;
+}
+
+.editor-panel .widget:hover > .widget.color-widget > .widget-wrapper {
+  display: block!important;
 }
 
 .hidden.editor {
