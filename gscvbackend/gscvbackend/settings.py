@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tastypie',
     'cards',
 )
 
@@ -85,3 +86,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'cards/static'),
 )
+
+# Tastypie
+
+TASTYPIE_ALLOW_MISSING_SLASH = True

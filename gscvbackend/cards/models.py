@@ -16,6 +16,8 @@ class Card(models.Model):
   fields = models.CharField(max_length=4096, null=True)
   fieldsCoordinates = models.CharField(max_length=2048, null=True)
   fieldsColors = models.CharField(max_length=2048, null=True)
-  
-  def __unicode__(self):
-    return self.title
+  fieldsSizes = models.CharField(max_length=2048, null=True)
+  render = models.CharField(max_length=128, null=True)
+  digest = models.CharField(max_length=64, null=True)
+  views = models.IntegerField(default=0)
+

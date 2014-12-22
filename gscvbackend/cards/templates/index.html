@@ -17,25 +17,33 @@
           };
         </script>
         <script data-main="main" src="{{ STATIC_URL }}sources/vendors/require.2.1.13.js"></script>
-        
+
 
     </head>
 
     <body>
-      <div class="page loading">
-      
-      </div>
       <div class="page gallery hidden">
         <header>
           <h1>La gallerie qui poutre</h1>
           <h2>GSCV, spécialistes en poneys depuis 1605</h2>
         </header>
+        <div class="renderer hidden">
+          <header>
+            <h1>Le visualisateur qui poutre</h1>
+            <h2>GSCV, les meilleurs tracteurs de l'asie-pacifique</h2>
+          </header>
+          <div>
+            <a href="#editor/1" class="edit"></a>
+            <img width="550px" height="300px" src="" class="render" /><div class="meta"><p><%= name %></p><p><%= title %></p></div>
+          </div>
+        </div>
         <div class="container"></div>
       </div>
       <div class="page editor hidden">
         <div class="editor-panel">
         </div>
         <div class="editor-view">
+          <a href="#" class="back"></a>
           <div class="card">
             <img class="background" />
             <p data-field="name" class="field name"></p>

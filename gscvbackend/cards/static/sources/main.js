@@ -2,6 +2,7 @@ require.config({
   shim : {
       'vendors/JQuery'            : { 'exports' : 'jQuery' },
       'vendors/Underscore'        : { 'exports' : '_' },
+      'vendors/moment'            : { 'exports' : 'moment' },
       'vendors/Backbone'          : { 'exports' : 'Backbone',      'deps' : [ 'vendors/JQuery', 'vendors/Underscore' ] },
       'vendors/SvgColorPicker'    : { 'exports' : 'SvgColorPicker' },
       'vendors/jquery/UI'         : { 'exports' : 'jQuery',        'deps' : [ 'vendors/JQuery' ] },

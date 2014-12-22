@@ -7,6 +7,16 @@ html, body {
   background: url(http://upload.wikimedia.org/wikipedia/commons/2/24/Transparent_Square_Tiles_Texture.png);
 }
 
+.editor-view > .back {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  width: 64px;
+  height: 64px;
+  background: transparent url(img/gallery.png) no-repeat 0 0;
+  background-size: contain;
+}
+
 .card {
   margin: auto;
 
@@ -19,9 +29,9 @@ html, body {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, .3);
   background: #2C2C2C;
   color: #FFFFFF;
-  
+
   position: relative;
-  
+
   overflow: hidden;
 }
 
@@ -69,9 +79,26 @@ html, body {
   transition: all 400ms ease-in-out!important;
 }
 
+.widget.color-widget {
+  position: relative;
+}
+.widget.color-widget:after {
+  position: absolute;
+  content: "(hover)";
+  left: 0;
+  bottom: -1px;
+  background: rgba(0,0,0,0.4);
+  z-index: -1;
+  height: 30px;
+  width: 100%;
+  text-align: right;
+  line-height: 30px;
+  padding-right: 10px;
+}
+
 .editor-panel .widget.color-widget > .widget-wrapper {
   position: absolute;
-  width: 260px;
+  width: 230px;
   z-index: 2;
   padding: 20px;
   background: #686664;
@@ -79,11 +106,18 @@ html, body {
   box-shadow: 0 3px 12px -3px rgba(0,0,0,0.8);
   border-top: 1px solid #888;
   display: none;
+  left: 50%;
+  margin-left: -115px;
 }
 
 .editor-panel .widget:hover > .widget.color-widget > .widget-wrapper {
   display: block!important;
 }
+
+.editor-panel .label-widget .text a {
+  text-decoration: underline;
+}
+
 
 .hidden.editor {
   opacity: 0;
@@ -119,7 +153,8 @@ html, body {
   font-weight: lighter;
   margin: 20px auto 0;
   display: block;
-  max-width: 720px;
+  max-width: 735px;
+  padding: 0 20px;
 }
 
 .gallery header h2 {
@@ -127,28 +162,86 @@ html, body {
 }
 
 .gallery .container {
-  
+
   margin: 40px auto 0;
-  max-width: 720px;
+  max-width: 735px;
   border-top: 1px solid #000;
   padding-top: 30px;
   overflow: auto;
   box-sizing: border-box;
   padding-bottom: 20px;
-  
+
+}
+
+.gallery ul {
+  text-align: center;
 }
 
 .gallery li {
-  width: 200px;
-  height: 140px;
+  width: 320px;
+  height: 192px;
   display: inline-block;
   margin: 20px;
-  border: 1px solid #000;
   position: relative;
+  overflow: hidden;
+}
+
+.gallery li .views {
+  position: absolute;
+  bottom: 10px;
+  color: #FFF;
+  right: 10px;
+  background: rgba(0,0,0,0.8);
+  padding: 5px 10px 5px 30px;
+  border-radius: 4px;
+}
+
+.gallery li .views:after {
+  content: " ";
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 8px;
+  left: 6px;
+  background: transparent url(img/eye_white.png) no-repeat 0 0;
+  background-size: 16px 16px;
+}
+
+.gallery li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery li:not(.create) a:after {
+
+  content: " ";
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin: -32px 0 0 0;
+  width: 100%;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.4) url(img/eye.png) no-repeat center center;
+  background-size: 54px 54px;
+
+}
+.gallery li a:hover:after {
+  display: block;
+}
+
+.gallery img {
+
+  height: 100%;
+  width: 100%;
+
 }
 
 .gallery li.create {
   cursor: pointer;
+  border: 2px solid #000;
 }
 .gallery li.create:after {
   content: "+";
@@ -161,7 +254,7 @@ html, body {
   margin-left: -20px;
   top: 50%;
   margin-top: -20px;
-  font-size: 40px;
+  font-size: 80px;
   display: block;
   pointer-events: none;
 }
@@ -194,16 +287,183 @@ html, body {
 .gallery li.create:hover:after {
   display: none;
 }
-  
+
 .gallery li header {
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 60px;
-  background: rgba(0, 0, 0, 0.4);
+  height: 51px;
   padding: 10px;
   color: #444;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  text-align: left;
 }
+
+.gallery .renderer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 1);
+  z-index: 10;
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -webkit-transition: all 300ms ease-in-out;
+}
+
+.gallery .renderer.hidden {
+  opacity: 0;
+  -webkit-transform: scale(1.2);
+  pointer-events: none;
+}
+
+.gallery .renderer > div {
+  display: block;
+  width: 550px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  width: 550px;
+  height: 300px;
+  margin-left: -275px;
+  top: 180px;
+  border: 0 transparent solid;
+  outline: none;
+}
+
+.gallery .renderer header {
+  width: 550px;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  margin-left: -275px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 25px;
+}
+
+.gallery .renderer .render {
+
+  position: absolute;
+  left: 0;
+  width: 550px;
+  height: 300px;
+  top: 0;
+  border: none;
+  outline: none;
+
+}
+.gallery .renderer .render:after {
+
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin: -32px 0 0 0;
+  background: rgba(255,255,255,0.4) url(img/fork.png) no-repeat center center;
+  background-size: 44px 54px;
+  content: " ";
+  display: none;
+
+}
+.gallery .renderer .render:hover:after {
+  display: block;
+}
+.gallery .renderer .meta {
+
+  left: 50%;
+  width: 550px;
+  position: absolute;
+  margin-left: -275px;
+  top: 300px;
+  font-size: 30px;
+  padding: 20px 0;
+
+}
+
+.gallery .renderer .meta .views:before {
+  content: " ";
+  position: absolute;
+  top: 2px;
+  left: -23px;
+  background: transparent url(img/eye.png) no-repeat center center;
+  background-size: 16px 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.gallery .renderer .meta .views {
+
+  position: absolute;
+  top: 20px;
+  right: 0;
+  font-size: 18px;
+
+}
+
+.gallery .renderer .meta .back {
+  display: block;
+  width: 50%;
+  height: 40px;
+  font-size: 16px;
+}
+
+.gallery .renderer .meta p {
+  margin: 0;
+  font-family: 'Helvetica Neue';
+  font-weight: 200;
+}
+
+.gallery .renderer .meta .title {
+  font-weight: bold;
+}
+
+.gallery .renderer .meta .name {
+  font-size: 24px;
+}
+
+
+.gallery .renderer .meta .date {
+  position: absolute;
+  right: 0;
+  top: 62px;
+  font-size: 24px;
+}
+
+
+.upload-button-widget {
+  position: relative;
+}
+
+.upload-button-widget:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #FFF;
+  text-align: center;
+  line-height: 30px;
+  font-size: 16px;
+  border-radius: 5px
+}
+
+.upload-button-widget.uploading:after {
+
+  content: "Uploading...";
+  background: rgba(0, 0, 0, 0.8);
+
+}
+
+.upload-button-widget.success:after {
+  content: "Success !";
+  background: rgba(19, 132, 19, 0.8);
+}
+.upload-button-widget.error:after {
+  content: "Error !";
+  background: rgba(255, 0, 0, 0.8);
+}
+
+
